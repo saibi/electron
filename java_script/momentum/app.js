@@ -26,9 +26,31 @@ console.log(hello);
 const firstHello = document.querySelector(".hello:first-child h1");
 console.log(firstHello);
 
+const hTwo = document.querySelector(".hello h2");
+console.log(hTwo);
+
 function onHelloClicked() {
+  const bg = document.body.style.backgroundColor;
+
   console.log("clicked");
   firstHello.style.color = "red";
+
+  if (bg === "tomato") {
+    document.body.style.backgroundColor = "yellow";
+  } else {
+    document.body.style.backgroundColor = "white";
+  }
+
+  /*
+  const clickedClass = "clicked";
+  if (hTwo.classList.contains(clickedClass)) {
+    hTwo.classList.remove(clickedClass);
+  } else {
+    hTwo.classList.add(clickedClass);
+  }
+  */
+
+  hTwo.classList.toggle("clicked");
 }
 firstHello.addEventListener("click", onHelloClicked);
 
