@@ -31,3 +31,23 @@ function onHelloClicked() {
   firstHello.style.color = "red";
 }
 firstHello.addEventListener("click", onHelloClicked);
+
+function handleMouseEnter() {
+  firstHello.style.color = "blue";
+}
+firstHello.addEventListener("mouseenter", handleMouseEnter);
+function handleMouseLeave() {
+  firstHello.style.color = "black";
+}
+firstHello.addEventListener("mouseleave", handleMouseLeave);
+
+function handleWindowResize() {
+  document.body.style.backgroundColor = "tomato";
+}
+window.addEventListener("resize", handleWindowResize);
+
+function handleWindowCopy() {
+  alert("copy");
+}
+
+window.addEventListener("copy", handleWindowCopy);
