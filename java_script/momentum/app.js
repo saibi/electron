@@ -1,4 +1,5 @@
-const age = prompt("How old are you?");
+//const age = prompt("How old are you?");
+const age = 18;
 
 console.log(typeof age);
 console.log(age);
@@ -15,3 +16,9 @@ if (isNaN(num)) {
 } else {
   console.log("You can do whatever you want to.");
 }
+
+const title = document.getElementById("title");
+console.dir(title);
+
+const hello = document.querySelectorAll(".hello h2");
+console.log(hello);
