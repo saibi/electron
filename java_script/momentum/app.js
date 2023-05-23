@@ -1,75 +1,42 @@
-//const age = prompt("How old are you?");
-const age = 18;
+const loginForm = document.querySelector("#login-form");
+const loginInput = loginForm.querySelector("input");
+const loginButton = loginForm.querySelector("button");
+const greeting = document.querySelector("#greeting");
 
-console.log(typeof age);
-console.log(age);
-const num = parseInt(age);
+const HIDDEN_CLASS = "hidden";
+const USERNAME_KEY = "username";
 
-if (isNaN(num)) {
-  console.log("please write a number");
-} else if (num < 18) {
-  console.log("You are too young.");
-} else if (num >= 18 && num <= 60) {
-  console.log("You can drink.");
-} else if (num > 60) {
-  console.log("You should exercise.");
+function handleLogin(event) {
+  const username = loginInput.value;
+  event.preventDefault();
+
+  console.log(username);
+  loginForm.classList.add(HIDDEN_CLASS);
+  paintGreeting(username);
+  localStorage.setItem(USERNAME_KEY, username);
+  /* 
+  if (username === "") {
+    alert("Please write your name");
+  } else if (username.length > 15) {
+    alert("your name is too long");
+  }
+
+  loginButton.addEventListener("click", handleLoginButtonClick);
+
+  // use form instead
+*/
+}
+function paintGreeting(username) {
+  greeting.innerHTML = "Hello " + username;
+  greeting.classList.remove(HIDDEN_CLASS);
+}
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASS);
+  loginForm.addEventListener("submit", handleLogin);
 } else {
-  console.log("You can do whatever you want to.");
+  loginForm.classList.add(HIDDEN_CLASS);
+  paintGreeting(savedUsername);
 }
-
-const title = document.getElementById("title");
-console.dir(title);
-
-const hello = document.querySelectorAll(".hello h2");
-console.log(hello);
-
-const firstHello = document.querySelector(".hello:first-child h1");
-console.log(firstHello);
-
-const hTwo = document.querySelector(".hello h2");
-console.log(hTwo);
-
-function onHelloClicked() {
-  const bg = document.body.style.backgroundColor;
-
-  console.log("clicked");
-  firstHello.style.color = "red";
-
-  if (bg === "tomato") {
-    document.body.style.backgroundColor = "yellow";
-  } else {
-    document.body.style.backgroundColor = "white";
-  }
-
-  /*
-  const clickedClass = "clicked";
-  if (hTwo.classList.contains(clickedClass)) {
-    hTwo.classList.remove(clickedClass);
-  } else {
-    hTwo.classList.add(clickedClass);
-  }
-  */
-
-  hTwo.classList.toggle("clicked");
-}
-firstHello.addEventListener("click", onHelloClicked);
-
-function handleMouseEnter() {
-  firstHello.style.color = "blue";
-}
-firstHello.addEventListener("mouseenter", handleMouseEnter);
-function handleMouseLeave() {
-  firstHello.style.color = "black";
-}
-firstHello.addEventListener("mouseleave", handleMouseLeave);
-
-function handleWindowResize() {
-  document.body.style.backgroundColor = "tomato";
-}
-window.addEventListener("resize", handleWindowResize);
-
-function handleWindowCopy() {
-  alert("copy");
-}
-
-window.addEventListener("copy", handleWindowCopy);
