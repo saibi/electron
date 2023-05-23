@@ -22,3 +22,12 @@ console.dir(title);
 
 const hello = document.querySelectorAll(".hello h2");
 console.log(hello);
+
+const firstHello = document.querySelector(".hello:first-child h1");
+console.log(firstHello);
+
+function onHelloClicked() {
+  console.log("clicked");
+  firstHello.style.color = "red";
+}
+firstHello.addEventListener("click", onHelloClicked);
