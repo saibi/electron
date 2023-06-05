@@ -36,17 +36,14 @@ const AGE_SAIBI = NOW - 1976;
 const AGE_SARAH = NOW - 2018;
 
 console.log(AGE_SAIBI, AGE_SARAH);
-*/
 
 const IDX_MASS = 0;
 const IDX_HEIGHT = 1;
 const IDX_BMI = 2;
 
-/*
-TEST DATA 1
-let mark = [78, 1.69, 0];
-let john = [92, 1.95, 0];
-*/
+// TEST DATA 1
+// let mark = [78, 1.69, 0];
+// let john = [92, 1.95, 0];
 
 // TEST DATA 2
 let mark = [95, 1.88, 0];
@@ -73,3 +70,24 @@ console.log(age, age2);
 console.log(`template literal
 next line
 next line`);
+*/
+
+const massMark = 78;
+const heightMark = 1.69;
+const massJohn = 92;
+const heightJohn = 1.95;
+
+const BMIMark = massMark / (heightMark * heightMark);
+const BMIJohn = massJohn / (heightJohn * heightJohn);
+console.log(BMIMark, BMIJohn);
+
+/* Write your code below. Good luck! 🙂 */
+if (BMIMark > BMIJohn) {
+  console.log("Mark's BMI is higher than John's!");
+  console.log(`Mark's BMI ${BMIMak} is higher than John's ${BMIJohn}!`);
+} else if (BMIMark < BMIJohn) {
+  console.log("John's BMI is higher than Mark's!");
+  console.log(`John's BMI ${BMIJohn} is higher than Mark's ${BMIMark}!`);
+} else {
+  console.log("The same BMI.");
+}
