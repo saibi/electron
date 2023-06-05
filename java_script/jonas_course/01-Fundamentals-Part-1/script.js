@@ -62,3 +62,14 @@ john[IDX_BMI] = bmi(john[IDX_MASS], john[IDX_HEIGHT]);
 let markHigherBMI = mark[IDX_BMI] > john[IDX_BMI];
 
 console.log(mark[IDX_BMI], john[IDX_BMI], markHigherBMI);
+
+const year = 2037;
+const birthYear = 1976;
+
+const age = "I am " + (year - birthYear) + " years old.";
+const age2 = `I am ${year - birthYear} years old`;
+
+console.log(age, age2);
+console.log(`template literal
+next line
+next line`);
