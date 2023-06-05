@@ -70,7 +70,6 @@ console.log(age, age2);
 console.log(`template literal
 next line
 next line`);
-*/
 
 const massMark = 78;
 const heightMark = 1.69;
@@ -81,7 +80,7 @@ const BMIMark = massMark / (heightMark * heightMark);
 const BMIJohn = massJohn / (heightJohn * heightJohn);
 console.log(BMIMark, BMIJohn);
 
-/* Write your code below. Good luck! 🙂 */
+// Write your code below. Good luck! 🙂 
 if (BMIMark > BMIJohn) {
   console.log("Mark's BMI is higher than John's!");
   console.log(`Mark's BMI ${BMIMak} is higher than John's ${BMIJohn}!`);
@@ -91,3 +90,16 @@ if (BMIMark > BMIJohn) {
 } else {
   console.log("The same BMI.");
 }
+
+const inputYear = "1991";
+console.log(Number(inputYear) + 18);
+*/
+/* Write your code below. Good luck! 🙂 */
+
+const bill = 275;
+const percent = bill >= 50 && bill <= 300 ? 15 : 20;
+const tip = (bill * percent) / 100;
+
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
