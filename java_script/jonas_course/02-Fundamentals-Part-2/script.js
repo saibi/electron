@@ -84,7 +84,7 @@ console.log(fruitProcess(2, 3));
 ---------------------------
 
 vscode OPTION + UP/DOWN 
-*/
+
 
 const calcAge = function (birthYear) {
   return 2023 - birthYear;
@@ -103,3 +103,26 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 };
 console.log(yearsUntilRetirement(1976, "saibi"));
 console.log(yearsUntilRetirement(1950, "Mike"));
+
+*/
+const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+
+const checkWinner = function (avgDolphins, avgKoalas) {
+  if (avgDolphins >= 2 * avgKoalas) {
+    console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+  } else if (avgKoalas >= 2 * avgDolphins) {
+    console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+  } else {
+    console.log(`No team wins...`);
+  }
+};
+
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(31, 29, 30);
+
+checkWinner(scoreDolphins, scoreKoalas);
+
+scoreDolphins = calcAverage(85, 54, 41);
+scoreKoalas = calcAverage(23, 34, 27);
+
+checkWinner(scoreDolphins, scoreKoalas);
