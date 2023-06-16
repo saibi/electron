@@ -104,7 +104,6 @@ const yearsUntilRetirement = function (birthYear, firstName) {
 console.log(yearsUntilRetirement(1976, "saibi"));
 console.log(yearsUntilRetirement(1950, "Mike"));
 
-*/
 const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
 const checkWinner = function (avgDolphins, avgKoalas) {
@@ -126,3 +125,32 @@ scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 
 checkWinner(scoreDolphins, scoreKoalas);
+*/
+
+const friends = ["Michael", "Steven", "Peter"];
+console.log(friends);
+console.log(friends[0]);
+console.log(friends.length);
+console.log(friends[friends.length - 1]);
+
+const years = new Array(1991, 1984, 2008, 2020);
+console.log(years);
+
+const jonas = ["kim", "young", "min", 2037 - 1991];
+
+const newLength = friends.push("Jay");
+console.log(friends);
+console.log(newLength);
+
+friends.unshift("Sebastian");
+console.log(friends);
+friends.pop();
+const popped = friends.pop();
+console.log(popped);
+console.log(friends);
+friends.shift();
+console.log(friends);
+console.log(friends.indexOf("Steven"));
+console.log(friends.indexOf("Bob"));
+console.log(friends.includes("Steven"));
+console.log(friends.includes("Bob"));
