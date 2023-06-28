@@ -238,6 +238,7 @@ console.log(saibi.getSummary());
 
 /* Write your code below. Good luck! 🙂 */
 
+/*
 const mark = {
   fullName: "Mark Miller",
   mass: 0.0,
@@ -275,3 +276,61 @@ if (mark.bmi >= john.bmi) {
     `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`
   );
 }
+
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetition ${rep} 💪`);
+}
+
+const jonasArray = ["jonas", "saibi", 2023, true];
+const types = [];
+
+for (let i = 0; i < jonasArray.length; i++) {
+  console.log(jonasArray[i]);
+  types[i] = typeof jonasArray[i];
+}
+
+console.log(types);
+
+const a = ["saibi", 18, 2023, true];
+for (let i = 0; i < a.length; i++) {
+  if (typeof a[i] == "number") {
+    console.log(a[i]);
+  }
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+console.log(dice);
+
+while (dice !== 6) {
+  console.log(`you rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6) + 1;
+}
+*/
+
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+/* Write your code below. Good luck! 🙂 */
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+  tips[i] = calcTip(bills[i]);
+  totals[i] = bills[i] + tips[i];
+
+  console.log(`${tips[i]} ${totals[i]}`);
+}
+
+const calcAverage = function (values) {
+  let sum = 0;
+  for (let i = 0; i < values.length; i++) {
+    sum += values[i];
+  }
+  return sum / values.length;
+};
+
+console.log(`average ${calcAverage(totals)}`);
