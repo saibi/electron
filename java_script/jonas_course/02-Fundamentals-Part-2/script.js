@@ -125,7 +125,6 @@ scoreDolphins = calcAverage(85, 54, 41);
 scoreKoalas = calcAverage(23, 34, 27);
 
 checkWinner(scoreDolphins, scoreKoalas);
-*/
 
 const friends = ["Michael", "Steven", "Peter"];
 console.log(friends);
@@ -154,3 +153,125 @@ console.log(friends.indexOf("Steven"));
 console.log(friends.indexOf("Bob"));
 console.log(friends.includes("Steven"));
 console.log(friends.includes("Bob"));
+
+const saibiObject = {
+  firstName: "Youngmin",
+  lastName: "Kim",
+  age: 2023 - 1976,
+  job: "engineer",
+  friends: ["tom", "peter", "steven"],
+};
+
+console.log(saibiObject);
+
+// dot notation
+console.log(saibiObject.lastName);
+
+// bracket notation
+const nameKey = "Name";
+console.log(saibiObject["last" + nameKey]);
+console.log(saibiObject["first" + nameKey]);
+
+const interestedIn = prompt(
+  "What do you want to know? Choose between firstName, lastName, age, job, and friends"
+);
+
+if (saibiObject[interestedIn]) {
+  console.log(saibiObject[interestedIn]);
+} else {
+  console.log("Wrong request!");
+}
+
+saibiObject.location = "Seoul";
+saibiObject["email"] = "kimyoungmin@gmail.com";
+
+console.log(
+  `${saibiObject.firstName} has ${saibiObject.friends.length} friends, and his best friends is called ${saibiObject.friends[0]}.`
+);
+
+const saibi = {
+  firstName: "Youngmin",
+  lastName: "Kim",
+  birthYear: 1976,
+  job: "engineer",
+  friends: ["tom", "peter", "steven"],
+  hasDriversLicense: true,
+
+  calcAge: function (birthYear) {
+    return 2023 - birthYear;
+  },
+};
+console.log(saibi.calcAge(1991));
+console.log(saibi["calcAge"](1991));
+
+const saibi = {
+  firstName: "Youngmin",
+  lastName: "Kim",
+  birthYear: 1976,
+  job: "engineer",
+  friends: ["tom", "peter", "steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function () {
+  //   return 2023 - this.birthYear;
+  // },
+  calcAge: function () {
+    this.age = 2023 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()}-year old ${
+      this.job
+    }, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license.`;
+  },
+};
+console.log(saibi.calcAge());
+console.log(saibi["calcAge"]());
+console.log(saibi.age);
+console.log(saibi.age);
+console.log(saibi.age);
+console.log(saibi.age);
+console.log(saibi.getSummary());
+
+*/
+
+/* Write your code below. Good luck! 🙂 */
+
+const mark = {
+  fullName: "Mark Miller",
+  mass: 0.0,
+  height: 0.0,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+const john = {
+  fullName: "John Smith",
+  mass: 0.0,
+  height: 0.0,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+mark.mass = 78.0;
+mark.height = 1.69;
+mark.calcBMI();
+
+john.mass = 92.0;
+john.height = 1.95;
+john.calcBMI();
+
+if (mark.bmi >= john.bmi) {
+  console.log(
+    `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`
+  );
+} else {
+  console.log(
+    `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`
+  );
+}
