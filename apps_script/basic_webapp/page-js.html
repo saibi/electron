@@ -1,11 +1,23 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var selectBoxes = document.querySelectorAll("select");
+    let selectBoxes = document.querySelectorAll("select");
     M.FormSelect.init(selectBoxes);
 
-    var datePicker = document.getElementById("prefDate");
-    M.Datepicker.init(datePicker);
+    google.script.run.withSuccessHandler(populateDates).getCalendarBusyDays();
   });
+
+  function populateDates(disabledDays) {
+    let datePicker = document.getElementById("prefDate");
+
+    console.log(disabledDays);
+    M.Datepicker.init(datePicker, {
+      disableDayFn: function (day) {
+        return (
+          disabledDays.indexOf(day.valueOf()) > -1 || day.valueOf() < Date.now()
+        );
+      },
+    });
+  }
 
   document.getElementById("btn").addEventListener("click", doStuff);
   document.getElementById("zip").addEventListener("input", getEstimate);

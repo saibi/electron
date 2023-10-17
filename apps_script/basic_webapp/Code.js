@@ -61,3 +61,21 @@ function getCost(zipCode) {
 function include(filename) {
   return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
+
+function getCalendarBusyDays() {
+  let calendar = CalendarApp.getDefaultCalendar();
+
+  let startDate = new Date();
+  let endDate = new Date();
+  endDate.setMonth(startDate.getMonth() + 1);
+
+  let events = calendar.getEvents(startDate, endDate);
+
+  let days = events.map(function (e) {
+    return e.getStartTime().setHours(0, 0, 0, 0);
+  });
+
+  let uniqueDays = [...new Set(days)];
+
+  return uniqueDays;
+}
