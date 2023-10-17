@@ -1,7 +1,9 @@
 function doGet(e) {
   Logger.log(e);
 
-  return HtmlService.createHtmlOutputFromFile("page");
+  // css, script 파일을 분리했기때문에 단순 page 파일 리턴 대신 전체 page 를 생성해서 리턴해야 한다.
+  //return HtmlService.createHtmlOutputFromFile("page");
+  return HtmlService.createTemplateFromFile("page").evaluate();
 }
 
 function userClicked(userInfo) {
@@ -18,4 +20,8 @@ function userClicked(userInfo) {
     userInfo.app,
     new Date(),
   ]);
+}
+
+function include(filename) {
+  return HtmlService.createHtmlOutputFromFile(filename).getContent();
 }
