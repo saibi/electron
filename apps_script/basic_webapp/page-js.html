@@ -1,7 +1,10 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    var elems = document.querySelectorAll("select");
-    var instances = M.FormSelect.init(elems);
+    var selectBoxes = document.querySelectorAll("select");
+    M.FormSelect.init(selectBoxes);
+
+    var datePicker = document.getElementById("prefDate");
+    M.Datepicker.init(datePicker);
   });
 
   document.getElementById("btn").addEventListener("click", doStuff);
