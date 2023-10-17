@@ -1,0 +1,18 @@
+h1 {
+  text-align: center;
+  font-weight: 100;
+  text-decoration: line-through;
+  letter-spacing: 15px;
+  font-size: 100px;
+  font-family: Roboto, serif;
+}
+p {
+  text-align: right;
+  font-weight: normal;
+  text-decoration: #f7822d underline wavy;
+  line-height: 2;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,3 +1,13 @@
 h2 {
-  color: indigo;
+  color: #5fcffc;
+  background-color: rgb(108, 208, 8);
+}
+
+button {
+  color: magenta;
+  background-color: cyan;
+}
+
+p {
+  color: olive;
 }
