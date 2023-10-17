@@ -19,7 +19,7 @@
     <?!= include("page-css"); ?>
   </head>
   <body>
-    <h1>hello world 10 with materializecss</h1>
+    <h3>hello world 10 with materializecss</h3>
     <div class="container">
       <div class="row">
         <div class="input-field col s6">
@@ -36,10 +36,9 @@
         <div class="input-field col s12">
           <select id="app">
             <option value="" disabled selected>Choose your app</option>
-            <option value="google">Google Sheets</option>
-            <option value="excel">Excel</option>
-            <option value="numbers">Numbers</option>
-            <option value="other">Other</option>
+            <? for(var i = 0; i< list.length; i++ ) { ?>
+            <option><?= list[i]; ?></option>
+            <? } ?>
           </select>
           <label>Application:</label>
         </div>
