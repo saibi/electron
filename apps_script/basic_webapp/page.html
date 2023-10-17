@@ -36,9 +36,7 @@
         <div class="input-field col s12">
           <select id="app">
             <option value="" disabled selected>Choose your app</option>
-            <? for(var i = 0; i< list.length; i++ ) { ?>
-            <option><?= list[i]; ?></option>
-            <? } ?>
+            <?!= list; ?>
           </select>
           <label>Application:</label>
         </div>

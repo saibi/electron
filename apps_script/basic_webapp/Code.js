@@ -10,10 +10,14 @@ function doGet(e) {
     .getRange(1, 1, ws.getRange("A1").getDataRegion().getLastRow(), 1)
     .getValues();
 
+  let htmlListArray = list
+    .map(function (r) {
+      return "<option>" + r[0] + "</option>";
+    })
+    .join("");
+
   var tmp = HtmlService.createTemplateFromFile("page");
-  tmp.list = list.map(function (r) {
-    return r[0];
-  });
+  tmp.list = htmlListArray;
   return tmp.evaluate();
 }
 
