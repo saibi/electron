@@ -1,14 +1,21 @@
 const url =
   "https://docs.google.com/spreadsheets/d/1kY30eXsn4Ym_FJe4Nat1g4yDVh589quFqquiwC104Xs/edit#gid=387912833";
 
+let Route = {};
+Route.path = function (reoute, callback) {
+  Route[reoute] = callback;
+};
+
 function doGet(e) {
   Logger.log(e);
 
-  if (e.parameters.v == "form") {
-    return loadForm();
+  Route.path("form", loadForm);
+  Route.path("about", loadAbout);
+
+  if (Route[e.parameters.v]) {
+    return Route[e.parameters.v]();
   } else {
-    let home = HtmlService.createTemplateFromFile("home");
-    return home.evaluate();
+    return render("home");
   }
 }
 
@@ -25,8 +32,12 @@ function loadForm() {
     })
     .join("");
 
-  var tmp = HtmlService.createTemplateFromFile("page");
-  tmp.list = htmlListArray;
+  // var tmp = HtmlService.createTemplateFromFile("page");
+  // tmp.list = htmlListArray;
+  // return tmp.evaluate();
+  return render("page", { list: htmlListArray });
+}
 
-  return tmp.evaluate();
+function loadAbout() {
+  return render("about", { title: "Use This Title", other: "Other Stuff" });
 }
