@@ -31,8 +31,31 @@ function userClicked(userInfo) {
     userInfo.firstName,
     userInfo.lastName,
     userInfo.app,
+    userInfo.zip,
+    userInfo.est,
     new Date(),
   ]);
+}
+
+function getCost(zipCode) {
+  let ss = SpreadsheetApp.openByUrl(url);
+  let ws = ss.getSheetByName("basic_webapp_estimate");
+  let data = ws.getRange(1, 1, ws.getLastRow(), 2).getValues();
+
+  let zipCodeList = data.map(function (r) {
+    return r[0];
+  });
+  let costList = data.map(function (r) {
+    return r[1];
+  });
+
+  let position = zipCodeList.indexOf(zipCode);
+
+  if (position > -1) {
+    return "$" + costList[position].toFixed(2);
+  } else {
+    return "Unavailable";
+  }
 }
 
 function include(filename) {
