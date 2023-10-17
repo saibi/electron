@@ -1,16 +1,24 @@
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var elems = document.querySelectorAll("select");
+    var instances = M.FormSelect.init(elems);
+  });
+
   document.getElementById("btn").addEventListener("click", doStuff);
 
   function doStuff() {
     let userInfo = {};
 
-    userInfo.firstName = document.getElementById("firstname").value;
-    userInfo.lastName = document.getElementById("lastname").value;
+    userInfo.firstName = document.getElementById("first_name").value;
+    userInfo.lastName = document.getElementById("last_name").value;
     userInfo.app = document.getElementById("app").value;
 
     google.script.run.userClicked(userInfo);
-    document.getElementById("firstname").value = "";
-    document.getElementById("lastname").value = "";
-    document.getElementById("app").value = "";
+    document.getElementById("first_name").value = "";
+    document.getElementById("last_name").value = "";
+
+    var myApp = document.getElementById("app");
+    myApp.selectedIndex = 0;
+    M.FormSelect.init(myApp);
   }
 </script>
