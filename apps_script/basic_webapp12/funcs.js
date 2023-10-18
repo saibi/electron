@@ -65,3 +65,11 @@ function getWords() {
   });
   return options;
 }
+
+function getTableData() {
+  let ss = SpreadsheetApp.openByUrl(url);
+  let ws = ss.getSheetByName("basic_webapp_table");
+  let data = ws.getRange(2, 1, ws.getLastRow() - 1, 3).getValues();
+
+  return data;
+}

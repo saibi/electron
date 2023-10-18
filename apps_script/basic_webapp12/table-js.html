@@ -1,0 +1,36 @@
+<script>
+  let data = [
+    [1, "jack", 55],
+    [2, "ho", 185],
+    [3, "wo", 1],
+  ];
+
+  document.addEventListener("DOMContentLoaded", function () {
+    google.script.run.withSuccessHandler(generateTable).getTableData();
+  });
+
+  function generateTable(dataArray) {
+    let tableBody = document.getElementById("table-body");
+
+    dataArray.forEach(function (r) {
+      let row = document.createElement("tr");
+
+      r.forEach(function (c) {
+        let col = document.createElement("td");
+        col.textContent = c;
+        row.appendChild(col);
+      });
+      tableBody.appendChild(row);
+    });
+
+    // let tableRows = "";
+    // data.forEach(function (row) {
+    //   tableRows += "<tr>";
+    //   row.forEach(function (cell) {
+    //     tableRows += "<td>" + cell + "</td>";
+    //   });
+    //   tableRows += "</tr>";
+    // });
+    // tableBody.innerHTML = tableRows;
+  }
+</script>

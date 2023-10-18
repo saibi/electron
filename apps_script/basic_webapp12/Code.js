@@ -11,6 +11,7 @@ function doGet(e) {
 
   Route.path("form", loadForm);
   Route.path("about", loadAbout);
+  Route.path("table", loadTable);
 
   if (Route[e.parameters.v]) {
     return Route[e.parameters.v]();
@@ -40,4 +41,8 @@ function loadForm() {
 
 function loadAbout() {
   return render("about", { title: "Use This Title", other: "Other Stuff" });
+}
+
+function loadTable() {
+  return render("table");
 }

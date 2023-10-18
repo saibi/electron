@@ -16,31 +16,36 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <?!= include("page-css"); ?>
+    <?!= include("table-css"); ?>
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <div class="input-field col s12">
-          <h1>Welcome!</h1>
-          <a
-            href="<?= ScriptApp.getService().getUrl(); ?>?v=form"
-            id="btn"
-            class="waves-effect waves-light btn-small indigo darken-3"
-          >
-            <i class="material-icons left">chevron_right</i>Add Record
-          </a>
-          <a
-            href="<?= ScriptApp.getService().getUrl(); ?>?v=table"
-            id="btn"
-            class="waves-effect waves-light btn-small indigo darken-3"
-          >
-            <i class="material-icons left">chevron_right</i>Show Table
-          </a>
+        <div class="col s12">
+          <table>
+            <thead>
+              <tr>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
         </div>
+      </div>
+
+      <div class="row">
+        <button
+          id="btn"
+          class="waves-effect waves-light btn-small indigo darken-3"
+        >
+          <i class="material-icons left">chevron_right</i>Run It!!!
+        </button>
       </div>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <?!= include("table-js"); ?>
   </body>
 </html>
