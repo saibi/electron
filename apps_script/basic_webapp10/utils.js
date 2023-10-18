@@ -10,5 +10,8 @@ function render(file, argsObject) {
       tmp[k] = argsObject[k];
     });
   }
-  return tmp.evaluate();
+  // return tmp.evaluate();
+  return tmp
+    .evaluate()
+    .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
