@@ -1,10 +1,20 @@
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("btn").addEventListener("click", doStuff);
+    document.getElementById("zip").addEventListener("input", getEstimate);
+
     let selectBoxes = document.querySelectorAll("select");
     M.FormSelect.init(selectBoxes);
 
     google.script.run.withSuccessHandler(populateDates).getCalendarBusyDays();
+
+    google.script.run.withSuccessHandler(populateWords).getWords();
   });
+
+  function populateWords(words) {
+    let favorite = document.getElementById("favorite");
+    M.Autocomplete.init(favorite, { data: words });
+  }
 
   function populateDates(disabledDays) {
     let datePicker = document.getElementById("prefDate");
@@ -18,9 +28,6 @@
       },
     });
   }
-
-  document.getElementById("btn").addEventListener("click", doStuff);
-  document.getElementById("zip").addEventListener("input", getEstimate);
 
   function doStuff() {
     let userInfo = {};
