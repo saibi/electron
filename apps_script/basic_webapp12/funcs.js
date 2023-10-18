@@ -12,7 +12,21 @@ function userClicked(userInfo) {
     userInfo.est,
     new Date(),
     userInfo.chip.join(),
+    userInfo.email,
   ]);
+
+  //sendEmail(userInfo);
+}
+
+function sendEmail(userInfo) {
+  let subject = "Thanks for your submission!";
+  let body = "We'll be in touch soon.";
+  let htmlTemplate = HtmlService.createTemplateFromFile("email");
+  htmlTemplate.fname = userInfo.firstName;
+  htmlTemplate.lname = userInfo.lastName;
+  let htmlBody = htmlTemplate.evaluate().getContent();
+
+  GmailApp.sendEmail(userInfo.email, subject, body, { htmlBody: htmlBody });
 }
 
 function getCost(zipCode) {
