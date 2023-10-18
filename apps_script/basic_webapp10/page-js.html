@@ -30,14 +30,34 @@
   }
 
   function buttonClickAction() {
-    let isValid = document.getElementById("first_name").checkValidity();
+    let toValidate = {
+      first_name: "Please enter a first name",
+      last_name: "Please enter a last name",
+      app: "Please select an app",
+      zip: "Please enter a zip code",
+    };
+
+    let idKeys = Object.keys(toValidate);
+    let allOk = true;
+    idKeys.forEach(function (id) {
+      if (!checkIfValid(id, toValidate[id])) {
+        allOk = false;
+      }
+    });
+    if (allOk) {
+      addRecord();
+    }
+  }
+
+  function checkIfValid(elementId, msg) {
+    let isValid = document.getElementById(elementId).checkValidity();
 
     if (!isValid) {
       // warn the user
-      M.toast({ html: "firstname is required!" });
-    } else {
-      addRecord();
+      M.toast({ html: msg });
+      return false;
     }
+    return true;
   }
 
   function addRecord() {
