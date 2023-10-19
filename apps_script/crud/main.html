@@ -14,24 +14,26 @@
     <?!= include("main-css"); ?>
   </head>
   <body>
-    <h1>Hello, world!</h1>
-
     <div class="container">
       <!-- Content here -->
       <ul class="nav nav-pills nav-fill">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Active</a>
+          <div class="nav-link active" aria-current="page" id="home-link">
+            Home
+          </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <div class="nav-link" id="search-link">Search</div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <div class="nav-link" id="add-link">Add</div>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
       </ul>
+
+      <div id="app"></div>
     </div>
 
     <script

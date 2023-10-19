@@ -1,1 +1,15 @@
-<script></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    document
+      .getElementById("search-link")
+      .addEventListener("click", loadSearchView);
+  });
+
+  function loadSearchView() {
+    google.script.run
+      .withSuccessHandler(function (html) {
+        document.getElementById("app").innerHTML = html;
+      })
+      .loadPage("search");
+  }
+</script>
