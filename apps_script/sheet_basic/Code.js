@@ -1,6 +1,3 @@
-function getCalendarEvents() {
-}
-
 function learnBasic() {
   Logger.log("hello");
 
@@ -11,7 +8,7 @@ function learnBasic() {
   sheet.getRange("c2:d4").setValue(99);
   sheet.getRange(2, 7, 2, 1).setValue("hoho");
 
-  let tmp = sheet.getRange(2, 1).getValue();
+  let tmp = sheet.getRange(2, 1).getValue(); // getDisplayValue()
   Logger.log(tmp);
   sheet.getRange(6, 6).setValue(tmp);
 
@@ -35,7 +32,6 @@ function learnBasic() {
 
   sheet1.getRange("C7").setFormula("=A7+B7");
 
-
   let lastRow = sheet1.getLastRow();
   let fillDownRange = sheet1.getRange(8, 3, lastRow - 8, 1);
   sheet1.getRange("C7").copyTo(fillDownRange);
@@ -46,6 +42,46 @@ function learnBasic() {
   // dumpCalendarEvents(sheet2);
 
   // sheetToCalendar();
+
+  // Browser.msgBox("Hello World");
+}
+
+function evaluateTemplateText(templateText, obj) {
+  let newMsg = templateText;
+  for (let key in obj) {
+    newMsg = newMsg.replace("{" + key + "}", obj[key]);
+  }
+  return newMsg;
+}
+
+function mapDistance() {
+
+  let mapObj = Maps.newDirectionFinder();
+
+  let start = "355 Chalan Pasaheru B224-A, Tamuning, 96913, Guam";
+  let end = "199 Chalan San Antonio, Tamuning, 96913, Guam";
+
+  mapObj.setOrigin(start);
+  mapObj.setDestination(end);
+  let directions = mapObj.getDirections();
+  Logger.log(directions["routes"][0]["legs"][0]["distance"]);
+  Logger.log(directions["routes"][0]["legs"][0]["duration"]);
+}
+
+function objTest() {
+  let appl = SpreadsheetApp;
+  let ss = appl.getActiveSpreadsheet();
+  let sheet1 = ss.getSheetByName("시트1");
+  
+  let templateText = sheet1.getRange("A16").getValue();  
+  let info = { name: "foo", msg : "Hello World"};
+
+  sheet1.getRange("B16").setValue(evaluateTemplateText(templateText, info));
+}
+
+function popupHello() {
+  Browser.msgBox("Hello World!!!" );
+
 }
 
 function sheetToCalendar() {
