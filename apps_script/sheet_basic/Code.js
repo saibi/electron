@@ -1,11 +1,14 @@
+function getCalendarEvents() {
+}
+
 function learnBasic() {
   Logger.log("hello");
 
   let appl = SpreadsheetApp;
   let ss = appl.getActiveSpreadsheet();
   let sheet = ss.getActiveSheet();
-  sheet.getRange("c2:d4").setValue(99);
 
+  sheet.getRange("c2:d4").setValue(99);
   sheet.getRange(2, 7, 2, 1).setValue("hoho");
 
   let tmp = sheet.getRange(2, 1).getValue();
@@ -36,10 +39,40 @@ function learnBasic() {
   let lastRow = sheet1.getLastRow();
   let fillDownRange = sheet1.getRange(8, 3, lastRow - 8, 1);
   sheet1.getRange("C7").copyTo(fillDownRange);
-  
 
   let sheet2 = ss.getSheetByName("sheet2");
   sheet2.getRange(1,1).setValue("this is sheet2");
+
+  // dumpCalendarEvents(sheet2);
+
+  // sheetToCalendar();
+}
+
+function sheetToCalendar() {
+  let appl = SpreadsheetApp;
+  let ss = appl.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName("cal_input");
+
+  let data = sheet.getRange(2, 1, sheet.getLastRow() -1, 5).getValues();
+  
+  let cal = CalendarApp.getDefaultCalendar();  
+
+  for ( let i = 0 ; i < data.length; i++ ) {
+    Logger.log(data[i]);
+    cal.createEvent( data[i][0], data[i][1], data[i][2], { location: data[i][3], description: data[i][4]});
+  }
+
+
+}
+
+function dumpCalendarEvents(sheet) {
+  let cal = CalendarApp.getDefaultCalendar();  
+  let events = cal.getEvents(new Date("2023-10-1"), new Date("2023-10-30"));
+
+  events.forEach(function(event) {
+    let row = [ event.getTitle(), event.getStartTime(), event.getEndTime(), event.getDescription()];
+    sheet.appendRow(row);  
+  });
 }
 
 function clearTheMess( sheet ) {
