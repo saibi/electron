@@ -25,13 +25,26 @@ function learnBasic() {
   let sheet1 = ss.getSheetByName("시트1");
   clearTheMess(sheet1);
 
+  let temp = sheet.getRange("A7:B11").getValues();
+  Logger.log(temp);
+
+  sheet1.getRange("D8:E12").setValues(temp);
+
+  sheet1.getRange("C7").setFormula("=A7+B7");
+
+
+  let lastRow = sheet1.getLastRow();
+  let fillDownRange = sheet1.getRange(8, 3, lastRow - 8, 1);
+  sheet1.getRange("C7").copyTo(fillDownRange);
+  
+
   let sheet2 = ss.getSheetByName("sheet2");
   sheet2.getRange(1,1).setValue("this is sheet2");
 }
 
 function clearTheMess( sheet ) {
   // see clearXXXX
-  sheet.getRange("B1:M20").clearContent();
+  sheet.getRange("C1:M20").clearContent();
 }
 
 /**
