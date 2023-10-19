@@ -1,3 +1,21 @@
+function getTheFiles() {
+  let folderIter = DriveApp.getFoldersByName("apps script");
+  
+  //let files = DriveApp.getFilesByName("apps script");
+
+  let myFolder = folderIter.next();
+
+  let filesIter = myFolder.getFiles();
+
+  while ( filesIter.hasNext() ) {
+    let file = filesIter.next();
+    Logger.log(file.getName());
+    Logger.log(file.getSize());
+//    file.getDownloadUrl()
+  }
+
+}
+
 function learnBasic() {
   Logger.log("hello");
 
