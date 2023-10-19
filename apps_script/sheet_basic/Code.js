@@ -1,3 +1,40 @@
+function findCell(val) {
+  let appl = SpreadsheetApp;
+  let ss = appl.getActiveSpreadsheet();
+  let sheet1 = ss.getSheetByName("시트1");
+  
+  let values = sheet1.getDataRange().getValues();
+
+  for (let row = 0; row < values.length; row++) {
+    let col = values[row].indexOf(val); 
+    if ( col > -1 ) {
+        let r = row + 1;
+        let c = col + 1;
+        Logger.log("found: Row " + r + ", Col " + c + " = " + values[row][col]);
+    }
+  }
+}
+
+function findColumn(rowNumber, text) {
+  rowNumber = 18;
+  text = "brand";
+
+  let appl = SpreadsheetApp;
+  let ss = appl.getActiveSpreadsheet();
+  let sheet1 = ss.getSheetByName("시트1");
+  
+  let lastCol = sheet1.getLastColumn();
+
+  let lookupRange = sheet1.getRange(rowNumber, 1, 1, lastCol);
+  let values = lookupRange.getValues();
+
+  Logger.log(values);
+
+  findCell("date");
+
+}
+
+
 function getTheFiles() {
   let folderIter = DriveApp.getFoldersByName("apps script");
   
@@ -13,7 +50,7 @@ function getTheFiles() {
     Logger.log(file.getSize());
 //    file.getDownloadUrl()
   }
-
+  // file.makeCopy(folder)
 }
 
 function learnBasic() {
