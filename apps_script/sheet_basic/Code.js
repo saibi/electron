@@ -1,3 +1,41 @@
+// use macro function to capture prototype code
+
+
+
+// function validation() {
+//   let validationRange = sheet.getRange(xxxx);
+//   let validationRule = SpreadsheetApp.newDataValidation().requireValueInRange(validationRange);
+
+//   activeCell.setDataValidation(varidationRule)
+// }
+
+function onEdit() {
+  let sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  let timeStamp = new Date().getSeconds();
+  let cell = sheet.getActiveCell();
+  sheet.getRange("A30").setValue("onEdit " + timeStamp + " [" + cell.getRow() + "," + cell.getColumn() +"]" );
+  
+  cell.offset(0, 1).setValue("neighbor");
+
+}
+
+function getAllSheets() {
+  let appl = SpreadsheetApp;
+  let sheets = appl.getActiveSpreadsheet().getSheets();
+
+  Logger.log(sheets);
+  let ret = [];
+  for ( let i = 0; i< sheets.length; i++) {
+    Logger.log(sheets[i].getName());
+    ret.push(sheets[i].getName());
+  }  
+  return ret;
+}
+function GETALLSHEETSNAME()
+{
+  return getAllSheets();
+}
+
 function findCell(val) {
   let appl = SpreadsheetApp;
   let ss = appl.getActiveSpreadsheet();
