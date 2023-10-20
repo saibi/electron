@@ -1,15 +1,38 @@
 <script>
+  let linkToPage = {
+    home: "home",
+    search: "search",
+    add: "add",
+  };
+
   document.addEventListener("DOMContentLoaded", function () {
-    document
-      .getElementById("search-link")
-      .addEventListener("click", loadSearchView);
+    document.querySelectorAll(".nav-link").forEach((el) => {
+      el.addEventListener("click", linkClicked);
+    });
   });
 
-  function loadSearchView() {
+  function linkClicked(e) {
+    document.querySelectorAll(".nav-link").forEach((el) => {
+      el.classList.remove("active");
+    });
+    e.srcElement.classList.add("active");
+
+    let srcId = e.srcElement.id;
+    let pageFilename = linkToPage[srcId];
+    if (pageFilename === undefined) {
+      console.log(`DBG ${srcId} page is not implemented`);
+      return;
+    }
+    loadView(pageFilename, "app");
+  }
+
+  function loadView(filename, targetId) {
     google.script.run
       .withSuccessHandler(function (html) {
-        document.getElementById("app").innerHTML = html;
+        document.getElementById(targetId).innerHTML = html;
       })
-      .loadPage("search");
+      .loadPage(filename);
   }
+
+  loadView("home", "app");
 </script>
