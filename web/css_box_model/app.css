@@ -1,0 +1,48 @@
+div {
+  width: 200px;
+  height: 200px;
+  background-color: #a2d2ff;
+}
+
+h1 {
+  background-color: pink;
+  padding-left: 30px;
+}
+#one {
+  background-color: #cdb4db;
+  border-style: solid;
+  border-color: black;
+  border-width: 5px;
+  box-sizing: border-box;
+}
+#two {
+  background-color: #fb8500;
+  border: medium dashed green;
+}
+#three {
+  background-color: #219ebc;
+  border-style: dotted;
+  border-color: yellow;
+  border-width: 5px;
+}
+
+.card {
+  width: 210px;
+  border-width: 1px;
+  border-color: grey;
+  border-style: solid;
+  border-radius: 5px;
+  text-align: center;
+}
+
+img {
+  width: 200px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(236, 183, 191);
+  border-radius: 50%;
+}
+
+button {
+  padding: 10px 30px;
+}
