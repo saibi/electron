@@ -5,6 +5,9 @@
     add: "add",
   };
 
+  let elApp = document.getElementById("app");
+  let sheetData = [];
+
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".nav-link").forEach((el) => {
       el.addEventListener("click", linkClicked);
@@ -23,6 +26,14 @@
       console.log(`DBG ${srcId} page is not implemented`);
       return;
     }
+    showLoadingIndicator(elApp);
+    if (srcId === "search") {
+      google.script.run
+        .withSuccessHandler(function (result) {
+          sheetData = JSON.parse(result).slice();
+        })
+        .getDataForSearch();
+    }
     loadView(pageFilename, "app");
   }
 
@@ -30,8 +41,42 @@
     google.script.run
       .withSuccessHandler(function (html) {
         document.getElementById(targetId).innerHTML = html;
+        if (filename === "search") {
+          document
+            .getElementById("searchInput")
+            .addEventListener("input", function (e) {
+              e.preventDefault();
+              search();
+            });
+        }
       })
       .loadPage(filename);
+  }
+
+  function search() {
+    let searchInput = document.getElementById("searchInput").value;
+    let resultArray = sheetData.filter(function (r) {
+      return searchInput !== "" && r.name.indexOf(searchInput) !== -1;
+    });
+    let elSearchResultsBody = document.getElementById("searchResults");
+    elSearchResultsBody.innerHTML = "";
+
+    let elRowTemplate = document.getElementById("rowTemplate");
+
+    resultArray.forEach(function (r) {
+      let tr = elRowTemplate.content.cloneNode(true);
+      tr.querySelector(".tId").innerText = r.id;
+      tr.querySelector(".tName").innerText = r.name;
+      tr.querySelector(".tEmail").innerText = r.email;
+      tr.querySelector(".tDesc").innerText = r.description;
+
+      elSearchResultsBody.appendChild(tr);
+    });
+  }
+
+  function showLoadingIndicator(el) {
+    el.innerHTML =
+      '<p class="placeholder-glow"><span class="placeholder col-12 placeholder-xs"></span></p>';
   }
 
   loadView("home", "app");

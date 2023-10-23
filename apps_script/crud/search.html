@@ -10,7 +10,7 @@
       placeholder="Type something to search..."
     />
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
 </form>
 
 <table class="table table-hover">
@@ -24,16 +24,18 @@
       <th scope="col"></th>
     </tr>
   </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>mark@abc.com</td>
-      <td>I am Mark</td>
-      <td><button type="button" class="btn btn-outline-dark">Edit</button></td>
-      <td>
-        <button type="button" class="btn btn-outline-dark">Delete</button>
-      </td>
-    </tr>
-  </tbody>
+  <tbody id="searchResults"></tbody>
 </table>
+
+<template id="rowTemplate">
+  <tr>
+    <th scope="row" class="tId"></th>
+    <td class="tName"></td>
+    <td class="tEmail"></td>
+    <td class="tDesc"></td>
+    <td><button type="button" class="btn btn-outline-dark">Edit</button></td>
+    <td>
+      <button type="button" class="btn btn-outline-dark">Delete</button>
+    </td>
+  </tr>
+</template>
