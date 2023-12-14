@@ -225,3 +225,127 @@ console.log(balance);
 
 const max = movements.reduce((acc, cur) => (acc > cur ? acc : cur), movements[0]);
 console.log(max);
+
+const totalDepositsUSD = movements
+	.filter((mov) => mov > 0)
+	.map((mov) => mov * 1.1)
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
+
+const firstWithdrawal = movements.find((mov) => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+
+const account = accounts.find((acc) => acc.owner === "Jessica Davis");
+
+console.log(movements.includes(-400));
+const anyDeposits = movements.some((mov) => mov === -400);
+console.log(anyDeposits);
+
+console.log(movements.every((mov) => mov > 0));
+console.log(account4.movements.every((mov) => mov > 0));
+const deposit = (mov) => mov > 0;
+console.log(movements.every(deposit));
+console.log(account4.movements.every(deposit));
+
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+console.log(arr.flat());
+
+const arrDeep = [[1, 2, 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat());
+
+const accountMovements = accounts.map((acc) => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+const overalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
+
+const overalBalance2 = accounts
+	.map((acc) => acc.movements)
+	.flat()
+	.reduce((acc, mov) => acc + mov, 0);
+
+const overalBalance3 = accounts.flatMap((acc) => acc.movements).reduce((acc, mov) => acc + mov, 0);
+
+const owners = ["Jonas", "Zach", "Adam", "Martha"];
+console.log(owners);
+console.log(owners.sort());
+console.log(owners);
+
+console.log(movements);
+console.log(movements.sort());
+
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+const y = Array.from({ length: 7 }, () => 1);
+console.log(y);
+
+const z = Array.from({ length: 7 }, (_, i) => i + 1);
+console.log(z);
+
+const randomDice = Array.from({ length: 100 }, () => Math.trunc(Math.random() * 6) + 1);
+console.log(randomDice);
+
+labelBalance.addEventListener("click", function () {
+	const movementsUI = Array.from(document.querySelectorAll(".movements__value"), (el) =>
+		el.textContent.replace("€", "")
+	);
+	console.log(movementsUI);
+
+	const movementsUI2 = [...document.querySelectorAll(".movements__value")];
+});
+
+const bankDepositSum = accounts
+	.flatMap((acc) => acc.movements)
+	.filter((mov) => mov > 0)
+	.reduce((acc, mov) => acc + mov, 0);
+console.log(bankDepositSum);
+
+const numDeposits1000 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce((count, mov) => (mov >= 1000 ? ++count : count), 0);
+console.log(numDeposits1000);
+
+// create a object with the sum of deposits and withdrawals
+const sums = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce(
+		(obj, mov) => {
+			mov > 0 ? (obj.deposits += mov) : (obj.withdrawals += mov);
+			return obj;
+		},
+		{ deposits: 0, withdrawals: 0 }
+	);
+console.log(sums);
+
+const sums2 = accounts
+	.flatMap((acc) => acc.movements)
+	.reduce(
+		(obj, mov) => {
+			obj[mov > 0 ? "deposits" : "withdrawals"] += mov;
+			return obj;
+		},
+		{ deposits: 0, withdrawals: 0 }
+	);
+
+console.log(sums2);
+
+// title case
+
+const convertTitleCase = function (title) {
+	const exceptions = ["a", "an", "and", "the", "but", "or", "on", "in", "with"];
+	const capitalize = (str) => str[0].toUpperCase() + str.slice(1);
+
+	const titleCase = title
+		.toLowerCase()
+		.split(" ")
+		.map((word) => (exceptions.includes(word) ? word : capitalize(word)))
+		.join(" ");
+	return capitalize(titleCase);
+};
+
+console.log(convertTitleCase("this is a nice title"));
+console.log(convertTitleCase("this is a LONG title but not too long"));
+console.log(convertTitleCase("and here is another LONG title"));
